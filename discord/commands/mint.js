@@ -31,7 +31,8 @@ module.exports = {
         .setDescription('Which network do we use? Note, we only have one network for now.')
         .setRequired(true)
         .addChoices(
-          { name: 'Polygon (Mumbai)', value: 'poly' } // based on shorthand in the API docs
+          { name: 'Polygon (Mumbai)', value: 'polygon' }, // based on shorthand in the API docs
+          { name: 'Solana (Devnet)', value: 'solana' }
           // https://docs.crossmint.io/mint-nfts/nft-minting-api/recipients#abbreviations
         ))
     .addStringOption(option =>

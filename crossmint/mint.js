@@ -27,7 +27,6 @@ async function mint(data){
             "name": data.nft_name,
             "image": data.nft_image,
             "description": data.nft_description
-        // would love to add optional traits here...
         },
         "recipient": recipient
     });
@@ -40,7 +39,7 @@ async function mint(data){
       };
 
       let mint_result;
-      await fetch(process.env.crossmintAPIEndpoint, requestOptions)
+      await fetch(process.env.crossmintAPIEndpoint+`/default${data.nft_network}/nfts`, requestOptions)
         .then(response => response.json())
         .then(result => mint_result = result)
         .catch(error => console.log('error', error));
@@ -60,7 +59,7 @@ async function checkStatus(mintingID){
     };
 
     let check_result;
-    await fetch(`${process.env.crossmintAPIEndpoint}/${mintingID}/status`, requestOptions)
+    await fetch(`${process.env.crossmintAPIEndpoint}/default${data.nft_network}/nfts/${mintingID}`, requestOptions)
     .then(response => response.json())
     .then(result => check_result = result)
     .catch(error => console.log('error', error));
